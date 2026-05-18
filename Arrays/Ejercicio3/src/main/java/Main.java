@@ -1,7 +1,9 @@
 import util.MiEntradaSalida;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 
 public class Main {
@@ -14,30 +16,26 @@ public class Main {
         System.out.println();
         numeroMenor(array);
 
-        HashSet<Integer> numeroUnico= extraerNumerosUnicos(array);
 
-        int numeroRepetido;
-        int vecesRepetido;
-        for (int i = 0; i < array.length; i++) {
-
-
-
-
-
+        int numeroGuardado = 0;
+        int vecesGuardado = 0;
+        int veces = 0;
+        for (int i : array) {
+            veces=0;
+            for (int j : array) {
+                if (i == j) {
+                    veces++;
+                }
+            }
+            if (veces > vecesGuardado) {
+                numeroGuardado = i;
+                vecesGuardado = veces;
+            }
         }
-
-
-
+        System.out.println("El numero "+numeroGuardado+" se ha repetido "+vecesGuardado+" veces");
 
     }
 
-    private static HashSet<Integer> extraerNumerosUnicos(int[] array) {
-        HashSet <Integer> numerosUnicos = new HashSet<>();
-        for (int i : array){
-            numerosUnicos.add(i);
-        }
-        return numerosUnicos;
-    }
 
     private static void numeroMenor(int[] array) {
         int numeroMenor=Integer.MAX_VALUE;
